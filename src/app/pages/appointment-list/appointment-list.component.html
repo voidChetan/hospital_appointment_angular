@@ -1,0 +1,34 @@
+ 
+<div class="row pb-1">
+    <div class="col-12 text-end">
+        <button class="btn btn-success" (click)="getAllAppointments()">All </button>
+        <button class="btn btn-primary" (click)="getTodaysAppointments()">Todays </button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-3" *ngFor="let item of appointmentList">
+        <div class="card card-margin">
+            <div class="card-header no-border">
+                <h5 class="card-title">{{item.name}}</h5>
+            </div>
+            <div class="card-body pt-0">
+                <div class="widget-49">
+                    <div class="widget-49-title-wrapper">
+                        <div class="widget-49-date-primary">
+                            <span class="widget-49-date-day">{{item.appointmentNo}}</span> 
+                        </div>
+                        <div class="widget-49-meeting-info">
+                            <span class="widget-49-pro-title">Mumbai</span>
+                            <span class="widget-49-meeting-time">{{item.appointmentDate |date:'dd-MMM-yy'}} {{item.appointmentTime}}</span>
+                        </div>
+                    </div> 
+                    <div class="widget-49-meeting-action">
+                        <a   class="btn btn-sm btn-success" *ngIf="item.isDone"> Done</a>
+                        <a   class="btn btn-sm btn-outline-primary"  *ngIf="!item.isDone" (click)="markDone(item.appointmentId)"> Mark Done</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
